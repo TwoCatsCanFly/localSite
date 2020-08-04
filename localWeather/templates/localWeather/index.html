@@ -1,4 +1,9 @@
 {% extends 'localWeather/main.html' %}
 {% block content %}
-    <h1>This is weather!</h1>
+    <h1>Погода</h1>
+    <p>Температура:  {{temp}} С</p>
+    <p>Влажность:  {{humidity}}%</p>
+    <p>Давление:  {{pressure}} мм.р.ст</p>
+    <p>Ветер:  {{wind_speed}} м/с</p>
+    <p>Город:  {{city_name}}</p>
 {% endblock %}
