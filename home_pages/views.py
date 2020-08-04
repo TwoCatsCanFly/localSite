@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
 # Create your views here.
-def localWeather(request):
+def home_pages(request):
 
-    return render(request, 'localWeather/home.html')
+    return render(request, 'home_pages/home.html')
