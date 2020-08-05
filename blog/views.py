@@ -4,6 +4,6 @@ from .models import *
 
 
 # Create your views here.
-class blog(ListView):
+class Blog(ListView):
     model = Post
     template_name = 'blog.html'
