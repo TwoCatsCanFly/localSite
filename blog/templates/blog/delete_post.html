@@ -1,50 +1,23 @@
 {% extends 'home_pages/main.html' %}
+{% block title %}Delete Post{% endblock %}
 {% block content %}
-<br>
-<div class="container">
-
+<!-- Page Content -->
+  <div class="container">
     <div class="row">
-
-      <!-- Blog Entries Column -->
-
-      <div class="col-md-8">
-        <!-- Blog Post -->
-        {% for post in object_list %}
-        <div class="card mb-4">
-          <img class="card-img-top" src="http://placehold.it/750x200" alt="Card image cap">
-          <div class="card-body">
-            <h2 class="card-title">
-                {{ post.title }}
-            </h2>
-            {% if post.description %}
-              <p class="card-text">{{ post.description }}</p>
-            {% endif %}
-            <a href="{% url 'article-detail' post.pk %}" class="btn btn-primary">Read More &rarr;</a>
-            <small><a class="float-right" href="{% url 'delete-article' post.pk%}">(Delete)</a></small>
-            <small><a class="float-right" href="{% url 'update-article' post.pk%}">(Edit)</a></small>
-          </div>
-          <div class="card-footer text-muted">
-            Posted on {{ post.date_created }} by
-            <a href="#">{{ post.author }}</a>
-          </div>
-        </div>
-        {% endfor %}
-
-        <!-- Pagination -->
-        <ul class="pagination justify-content-center mb-4">
-          <li class="page-item">
-            <a class="page-link" href="#">&larr; Older</a>
-          </li>
-          <li class="page-item disabled">
-            <a class="page-link" href="#">Newer &rarr;</a>
-          </li>
-        </ul>
-
+      <!-- Post Content Column -->
+      <div class="col-lg-8">
+          <br>
+          <h3>Delete: {{post.title}}</h3>
+          <br>
+          <form method="POST">
+              {% csrf_token %}
+              <button class="btn btn-secondary">Delete Post!</button>
+          </form>
+          <br>
+          <a href="{% url 'article-detail' post.pk %}" class="btn btn-primary">Back</a>
       </div>
-
       <!-- Sidebar Widgets Column -->
       <div class="col-md-4">
-
         <!-- Search Widget -->
         <div class="card my-4">
           <h5 class="card-header">Search</h5>
@@ -57,7 +30,6 @@
             </div>
           </div>
         </div>
-
         <!-- Categories Widget -->
         <div class="card my-4">
           <h5 class="card-header">Categories</h5>
@@ -92,7 +64,6 @@
             </div>
           </div>
         </div>
-
         <!-- Side Widget -->
         <div class="card my-4">
           <h5 class="card-header">Side Widget</h5>
@@ -100,14 +71,9 @@
             You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
           </div>
         </div>
-
       </div>
-
     </div>
     <!-- /.row -->
-
   </div>
   <!-- /.container -->
-
-
 {% endblock %}
