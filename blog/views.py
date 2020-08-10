@@ -8,6 +8,7 @@ from django.urls import reverse_lazy
 class Blog(ListView):
     model = Post
     template_name = 'blog/blog.html'
+    ordering = ['-date_created']
 
 class ArticleDetail(DetailView):
     model = Post
@@ -17,8 +18,6 @@ class AddPost(CreateView):
     model = Post
     form_class = PostForm
     template_name = 'blog/add_post.html'
-    #fields = '__all__'
-    #fields = ('title','body')
 
 class UpdatePost(UpdateView):
     model = Post
