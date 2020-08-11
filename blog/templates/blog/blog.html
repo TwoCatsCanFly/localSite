@@ -16,12 +16,18 @@
             <h2 class="card-title">
                 {{ post.title }}
             </h2>
+            <a href="{% url 'category' post.category|slugify%}"><small>{{ post.category }}</small></a>
             {% if post.description %}
               <p class="card-text">{{ post.description }}</p>
             {% endif %}
             <a href="{% url 'article-detail' post.pk %}" class="btn btn-primary">Read More &rarr;</a>
-            <small><a class="float-right" href="{% url 'delete-article' post.pk%}">(Delete)</a></small>
-            <small><a class="float-right" href="{% url 'update-article' post.pk%}">(Edit)</a></small>
+
+            {% if user.is_authenticated %}
+                <small><a class="float-right" href="{% url 'delete-article' post.pk%}">(Delete)</a></small>
+                <small><a class="float-right" href="{% url 'update-article' post.pk%}">(Edit)</a></small>
+            {% endif %}
+
+
           </div>
           <div class="card-footer text-muted">
             Posted on {{ post.date_created }} by

@@ -1,7 +1,6 @@
 {% extends 'home_pages/main.html' %}
-{% block title %}Update Post{% endblock %}
+{% block title %}Add Category{% endblock %}
 {% block content %}
-
 {% if user.is_authenticated %}
 <!-- Page Content -->
   <div class="container">
@@ -12,7 +11,7 @@
           <form method="POST">
               {% csrf_token %}
               {{form.as_ul}}
-              <button class="btn btn-secondary">Update</button>
+              <button class="btn btn-secondary">Add</button>
 
           </form>
       </div>
@@ -79,5 +78,4 @@
 {% else %}
   <h1>Unauthorized. Nice try!))</h1>
 {% endif %}
-
 {% endblock %}

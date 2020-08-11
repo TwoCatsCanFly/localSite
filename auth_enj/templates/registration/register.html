@@ -1,0 +1,20 @@
+{% extends 'home_pages/main.html' %}
+{% block title %}Register{% endblock %}
+{% block content %}
+<!-- Page Content -->
+  <div class="container">
+    <div class="row">
+      <!-- Post Content Column -->
+      <div class="col-lg-8">
+          <br>
+          <form method="POST">
+              {% csrf_token %}
+              {{form.as_p}}
+              <button class="btn btn-secondary">Register</button>
+          </form>
+      </div>
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container -->
+{% endblock %}

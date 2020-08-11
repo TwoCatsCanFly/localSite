@@ -1,6 +1,7 @@
 {% extends 'home_pages/main.html' %}
 {% block title %}Add Post{% endblock %}
 {% block content %}
+{% if user.is_authenticated %}
 <!-- Page Content -->
   <div class="container">
     <div class="row">
@@ -74,4 +75,7 @@
     <!-- /.row -->
   </div>
   <!-- /.container -->
+{% else %}
+  <h1>Unauthorized. Nice try!))</h1>
+{% endif %}
 {% endblock %}

@@ -22,9 +22,38 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'weather' %}">Погода</a>
         </li>
-        <li class="nav-item">
+        {% if cat_menu %}
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Теги
+        </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            {% for cat in cat_menu %}
+              <a class="dropdown-item" href="{% url 'category' cat|slugify%}">{{ cat }}</a>
+            {% endfor %}
+            {% if user.is_authenticated %}
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="{% url 'add-category' %}">Новый тег</a>
+            {% endif %}
+          </div>
+         </li>
+        {% endif %}
+        {% if user.is_authenticated %}
+          <li class="nav-item">
           <a class="nav-link" href="{% url 'add-article' %}">Новый пост</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+        </li>
+        {% else %}
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'register' %}">Регистрация</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">Login</a>
+        </li>
+        {% endif %}
       </ul>
     </div>
   </nav>
