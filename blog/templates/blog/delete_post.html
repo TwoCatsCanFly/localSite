@@ -2,6 +2,7 @@
 {% block title %}Delete Post{% endblock %}
 {% block content %}
 {% if user.is_authenticated %}
+   {% if user.id == post.author.id %}
 <!-- Page Content -->
   <div class="container">
     <div class="row">
@@ -77,6 +78,9 @@
     <!-- /.row -->
   </div>
   <!-- /.container -->
+  {% else %}
+    <h1>Unauthorized. Nice try!))</h1>
+  {% endif %}
 {% else %}
   <h1>Unauthorized. Nice try!))</h1>
 {% endif %}

@@ -39,8 +39,10 @@
         <p>{{ post.body|safe }}</p>
         <a href="{% url 'blog' %}" class="btn btn-secondary">Back</a>
         {% if user.is_authenticated %}
-        <a href="{% url 'update-article' post.pk%}" class="btn btn-secondary">Edit</a>
-        <a href="{% url 'delete-article' post.pk%}" class="btn btn-secondary">Delete</a>
+          {% if user.id == post.author.id %}
+          <a href="{% url 'update-article' post.pk%}" class="btn btn-secondary">Edit</a>
+          <a href="{% url 'delete-article' post.pk%}" class="btn btn-secondary">Delete</a>
+          {% endif %}
         {% endif %}
         <hr>
 

@@ -23,8 +23,10 @@
             <a href="{% url 'article-detail' post.pk %}" class="btn btn-primary">Read More &rarr;</a>
 
             {% if user.is_authenticated %}
+                {% if user.id == post.author.id %}
                 <small><a class="float-right" href="{% url 'delete-article' post.pk%}">(Delete)</a></small>
                 <small><a class="float-right" href="{% url 'update-article' post.pk%}">(Edit)</a></small>
+                {% endif %}
             {% endif %}
 
 
