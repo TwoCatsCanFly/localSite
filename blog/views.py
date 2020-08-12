@@ -17,9 +17,13 @@ class Blog(ListView):
         context['cat_menu'] = cat_menu
         return context
 
+def CategoryListView(request):
+    cat_menu_list = Category.objects.all()
+    return render(request, 'blog/category_list.html',{'cat_menu_list':cat_menu_list})
+
+
 def CategoryView(request, cats):
     category_posts = Post.objects.filter(category=cats.replace('-',' '))
-
     return render(request, 'blog/categories.html',{'category_posts':category_posts,'cats':cats.title().replace('-',' ')})
 
 class ArticleDetail(DetailView):
