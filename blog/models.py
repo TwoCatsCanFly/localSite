@@ -20,6 +20,7 @@ class Post(models.Model):
     body = models.TextField(null=True, blank=True)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
     category = models.CharField(max_length=255, default='coding')
+    likes = models.ManyToManyField(User, related_name='blog_posts')
 
     def __str__(self):
         return str(self.title)+' | '+str(self.author)

@@ -2,37 +2,36 @@
 {% block title %}Categories{% endblock %}
 {% block content %}
 {% if user.is_authenticated %}
-    <br>
-    <h1>{{ cats }}</h1>
-    <br>
-    <ul>
+<br>
+<br>
+<div>
+<h1 class="mt-4">{{ cats }}</h1>
+<ul>
     {% for post in category_posts %}
-        <div class="card mb-4">
-          <img class="card-img-top" src="http://placehold.it/750x200" alt="Card image cap">
-          <div class="card-body">
-            <h2 class="card-title">
-                {{ post.title }}
-            </h2>
-            <small>{{ post.category }}</small>
-            {% if post.description %}
-              <p class="card-text">{{ post.description }}</p>
-            {% endif %}
-            <a href="{% url 'article-detail' post.pk %}" class="btn btn-primary">Read More &rarr;</a>
-
-            {% if user.is_authenticated %}
-                <small><a class="float-right" href="{% url 'delete-article' post.pk%}">(Delete)</a></small>
-                <small><a class="float-right" href="{% url 'update-article' post.pk%}">(Edit)</a></small>
-            {% endif %}
-
-
-          </div>
-          <div class="card-footer text-muted">
-            Posted on {{ post.date_created }} by
-            <a href="#">{{ post.author }}</a>
-          </div>
-        </div>
-    {% endfor %}
-    </ul>
+    <div class="card mb-4">
+      <img class="card-img-top" src="http://placehold.it/750x200" alt="Card image cap">
+      <div class="card-body">
+        <h2 class="card-title">{{ post.title }}</h2>
+        <small>{{ post.category }}</small>
+        {% if post.description %}
+            <p class="card-text">{{ post.description }}</p>
+        {% endif %}
+        <a href="{% url 'article-detail' post.pk %}" class="btn btn-primary">Read More &rarr;</a>
+        {% if user.is_authenticated %}
+          {% if user.id == post.author.id %}
+            <small><a class="float-right" href="{% url 'delete-article' post.pk%}">(Delete)</a></small>
+            <small><a class="float-right" href="{% url 'update-article' post.pk%}">(Edit)</a></small>
+          {% endif %}
+        {% endif %}
+      </div>
+      <div class="card-footer text-muted">
+        Posted on {{ post.date_created }} by
+        <a href="#">{{ post.author }}</a>
+      </div>
+    </div>
+{% endfor %}
+</ul>
+</div>
 {% else %}
   <h1>Unauthorized. Nice try!))</h1>
 {% endif %}
