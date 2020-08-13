@@ -49,7 +49,7 @@
         {% endif %}
     {% else %}
     ( {{ total_likes }} likes )
-    <small>Login to like</small>
+    <small><a href="{% url 'login' %}">Login</a> to like</small>
     {% endif %}
   </form>
   <!-- Comments Form -->

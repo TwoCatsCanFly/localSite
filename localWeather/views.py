@@ -41,8 +41,18 @@ def localWeather(request):
 
                    }
     else: context = {'cod':api['cod']}
-
-    if api.setdefault('rain',None): context.update({'rain_1h':api['rain']['rain.1h'],'rain_3h':api['rain']['rain.3h']})
-    if api.setdefault('snow',None): context.update({'snow_1h':api['snow']['snow.1h'],'snow_3h':api['snow']['snow.3h']})
-
+    print(f'API responce: {api}')
+    if api.setdefault('rain',None):
+        apt = list(api['rain'].keys())
+        if '1h' in apt:
+            context.update({'rain_1h': api['rain']['1h']})
+        elif '3h' in apt:
+            context.update({'rain_3h': api['rain']['3h']})
+    if api.setdefault('snow',None):
+        apts = list(api['snow'].keys())
+        if '1h' in apts:
+            context.update({'snow_1h': api['snow']['1h']})
+        elif '3h' in apts:
+            context.update({'snow_3h': api['snow']['3h']})
+    print(f'Context values: {context}')
     return render(request, 'localWeather/index.html',context)
