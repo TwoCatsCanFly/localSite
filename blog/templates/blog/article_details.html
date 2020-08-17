@@ -20,9 +20,11 @@
   <hr>
   <!-- Post Content -->
   <hr>
+  <div>
   <p>{{ post.description }}</p>
   <hr>
   <p>{{ post.body|safe }}</p>
+  </div>
   <a href="{% url 'blog' %}" class="btn btn-secondary">Back</a>
   {% if user.is_authenticated %}
     {% if user.id == post.author.id %}

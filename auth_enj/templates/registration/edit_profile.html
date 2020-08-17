@@ -1,0 +1,21 @@
+{% extends 'home_pages/main_wo_widgets.html' %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<!-- Page Content -->
+  <div class="container">
+    <div class="row">
+      <!-- Post Content Column -->
+      <div>
+          <br>
+          <form method="POST">
+              {% csrf_token %}
+              {{form.as_p}}
+              <button class="btn btn-secondary">Save</button>
+          </form>
+          <br>
+      </div>
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container -->
+{% endblock %}

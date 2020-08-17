@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'home_pages',
     'blog',
     'localWeather',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
