@@ -21,7 +21,8 @@ class UserEditView(generic.UpdateView):
         return self.request.user
 
 class PasswordsChangeView(PasswordChangeView):
-    form_class = PasswordChangeForm
+    form_class = PasswordChangingForm
+    #form_class = PasswordChangeForm
     success_url = reverse_lazy('password_success')
 
 

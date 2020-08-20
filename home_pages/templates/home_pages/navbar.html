@@ -29,7 +29,7 @@
         </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             {% for cat in cat_menu %}
-              <a class="dropdown-item" href="{% url 'category' cat|slugify%}">{{ cat }}</a>
+              <a class="dropdown-item" href="{% url 'category' cat%}">{{ cat }}</a>
             {% endfor %}
             {% if user.is_authenticated %}
               <div class="dropdown-divider"></div>

@@ -6,12 +6,12 @@
   <!-- Post Content Column -->
   <div class="col-lg-8">
       <br>
-      <form method="POST">
+      <form method="POST" enctype="multipart/form-data">
           {% csrf_token %}
           {{form.media}}
           {{form.as_p}}
           <button class="btn btn-secondary">Post</button>
-
+          <br>
       </form>
   </div>
   <script>

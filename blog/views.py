@@ -49,6 +49,9 @@ class AddPost(CreateView):
     model = Post
     form_class = PostForm
     template_name = 'blog/add_post.html'
+    success_url = reverse_lazy('blog')
+    #норм реверс не работает((((
+
 
 class AddCategory(CreateView):
     model = Category
@@ -59,6 +62,7 @@ class UpdatePost(UpdateView):
     model = Post
     form_class = EditForm
     template_name = 'blog/update_post.html'
+    success_url = reverse_lazy('blog')
 
 class DeletePost(DeleteView):
     model = Post

@@ -7,7 +7,7 @@
   {% for i in cat_menu_list %}
   <div class="col-lg-8">
 
-      <h4> <a href="{% url 'category' i|slugify%}">{{ i }}</a></h4>
+      <h4> <a href="{% url 'category' i%}">{{ i }}</a></h4>
 
   </div>
   {% endfor %}

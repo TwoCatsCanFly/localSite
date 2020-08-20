@@ -9,7 +9,7 @@
       <h2 class="card-title">
           {{ post.title }}
       </h2>
-      <a href="{% url 'category' post.category|slugify%}"><small>{{ post.category }}</small></a>
+      <a href="{% url 'category' post.category%}"><small>{{ post.category }}</small></a>
       {% if post.description %}
         <p class="card-text">{{ post.description }}</p>
       {% endif %}
