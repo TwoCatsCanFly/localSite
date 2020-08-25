@@ -4,7 +4,9 @@
 <div>
   {% for post in object_list %}
   <div class="card mb-4">
-    <img class="card-img-top" src="http://placehold.it/750x200" alt="Card image cap">
+    {% if post.header_image %}
+      <img class="card-img-top" src="{{ post.header_image.url }}" alt="http://placehold.it/750x200">
+    {% endif %}
     <div class="card-body">
       <h2 class="card-title">
           {{ post.title }}

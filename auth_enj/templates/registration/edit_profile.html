@@ -6,7 +6,10 @@
     <div class="row">
       <!-- Post Content Column -->
       <div>
+          <h1>Edit {{user.username}}'s profile...</h1>
           <br>
+          {{ user.profile.bio }}
+          <Hr>
           <form method="POST">
               {% csrf_token %}
               {{form.as_p}}
