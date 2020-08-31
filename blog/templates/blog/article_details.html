@@ -8,7 +8,7 @@
   <!-- Author -->
   <p class="lead">
     by
-    <a href="#">{{ post.author }}</a>
+    <a href="{% url 'show_profile' post.author.profile.id %}">{{ post.author }}</a>
     <small><a class="float-right" href="{% url 'category' post.category%}">{{ post.category }}</a></small>
   </p>
   <hr>
@@ -57,10 +57,10 @@
     {% endif %}
   </form>
   <br></br>
-  <div class="card mb-3" style="max-width: 540px;">
+  <div class="card mb-3">
     <div class="row no-gutters">
       <div class="col-md-2">
-        {% if  post.author.profile.profile_pic.url  %}
+        {% if  post.author.profile.profile_pic  %}
           <img src="{{ post.author.profile.profile_pic.url }}" class="card-img" alt="..." width="200" height="200">
         {% else %}
           <img src="http://placehold.it/200x200" class="card-img" alt="...">
@@ -74,13 +74,11 @@
             <h5 class="card-title">{{ post.author }}</h5>
           {% endif %}
           <p class="small text-muted">
-
-            <a href="{{ post.author.website_url }}" >Website</a> |
-            <a href="{{ post.author.facebook_url }}" >Facebook</a> |
-            <a href="{{ post.author.twitter_url }}" >Twitter</a> |
-            <a href="{{ post.author.instagram_url }}" >Instagram</a> |
-            <a href="{{ post.author.pinterest_url }}" >Pinterest</a>
-
+            {% if post.author.website_url %}<a href="{{ post.author.website_url }}" > Website </a> {% endif %}
+            {% if post.author.facebook_url %}<a href="{{ post.author.facebook_url }}" > Facebook </a> {% endif %}
+            {% if post.author.twitter_url %}<a href="{{ post.author.twitter_url }}" > Twitter </a> {% endif %}
+            {% if post.author.instagram_url %}<a href="{{ post.author.instagram_url }}" > Instagram </a> {% endif %}
+            {% if post.author.pinterest_url %}<a href="{{ post.author.pinterest_url }}" > Pinterest </a> {% endif %}
           </p>
           <p class="card-text">{{ post.author.profile.bio }}</p>
         </div>
