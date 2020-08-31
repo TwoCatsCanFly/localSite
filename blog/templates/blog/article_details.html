@@ -74,11 +74,11 @@
             <h5 class="card-title">{{ post.author }}</h5>
           {% endif %}
           <p class="small text-muted">
-            {% if post.author.website_url %}<a href="{{ post.author.website_url }}" > Website </a> {% endif %}
-            {% if post.author.facebook_url %}<a href="{{ post.author.facebook_url }}" > Facebook </a> {% endif %}
-            {% if post.author.twitter_url %}<a href="{{ post.author.twitter_url }}" > Twitter </a> {% endif %}
-            {% if post.author.instagram_url %}<a href="{{ post.author.instagram_url }}" > Instagram </a> {% endif %}
-            {% if post.author.pinterest_url %}<a href="{{ post.author.pinterest_url }}" > Pinterest </a> {% endif %}
+            {% if post.author.profile.website_url %}<a href="{{ post.author.profile.website_url }}" > Website </a> {% endif %}
+            {% if post.author.profile.facebook_url %}<a href="{{ post.author.profile.facebook_url }}" > Facebook </a> {% endif %}
+            {% if post.author.profile.twitter_url %}<a href="{{ post.author.profile.twitter_url }}" > Twitter </a> {% endif %}
+            {% if post.author.profile.instagram_url %}<a href="{{ post.author.profile.instagram_url }}" > Instagram </a> {% endif %}
+            {% if post.author.profile.pinterest_url %}<a href="{{ post.author.profile.pinterest_url }}" > Pinterest </a> {% endif %}
           </p>
           <p class="card-text">{{ post.author.profile.bio }}</p>
         </div>

@@ -37,5 +37,14 @@ class ShowProfileView(DetailView):
         context['page_user'] = page_user
         return context
 
+class EditProfilePageView(generic.UpdateView):
+    model = Profile
+    template_name = 'registration/edit_profile_page.html'
+    success_url = reverse_lazy('home')
+    fields = ['bio','profile_pic','website_url','facebook_url','twitter_url','instagram_url','pinterest_url']
+
+
+
+
 def password_success(request):
     return render(request, 'registration/password_success.html',{})

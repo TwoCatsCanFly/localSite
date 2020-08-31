@@ -1,11 +1,8 @@
 {% extends 'home_pages/main_wo_widgets.html' %}
 {% block title %}Edit Profile{% endblock %}
 {% block content %}
-<!-- Page Content -->
-  <div class="container">
-    <div class="row">
-      <!-- Post Content Column -->
-      <div>
+{% if user.is_authenticated %}
+    {% if user.id == profile.user.id %}
           <h1>Edit {{user.username}}'s profile...</h1>
           <br>
           {{ user.profile.bio }}
@@ -16,9 +13,10 @@
               <button class="btn btn-secondary">Save</button>
           </form>
           <br>
-      </div>
-    </div>
-    <!-- /.row -->
-  </div>
-  <!-- /.container -->
+    {% else %}
+        <h1>You un correct user. Nice try!))</h1>
+    {% endif %}
+{% else %}
+  <h1>Unauthorized. Nice try!))</h1>
+{% endif %}
 {% endblock %}

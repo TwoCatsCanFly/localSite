@@ -1,12 +1,13 @@
 {% extends 'home_pages/main_wo_widgets.html' %}
-{% block title %}Edit Profile{% endblock %}
+{% block title %}Profile{% endblock %}
 {% block content %}
+
 <!-- Page Content -->
   <div class="container">
     <div class="row">
       <!-- Post Content Column -->
       <div>
-          <h1>{{user.username}}'s profile...</h1>
+          <h1>{{page_user}}'s profile...</h1>
           <br>
           <div>
             <div>
@@ -25,19 +26,17 @@
                     <h5 class="card-title">{{ page_user }}</h5>
                   {% endif %}
                   <p class="small text-muted">
-                    {% if page_user.website_url %}<a href="{{ post.author.website_url }}" > Website </a> {% endif %}
-                    {% if page_user.facebook_url %}<a href="{{ post.author.facebook_url }}" > Facebook </a> {% endif %}
-                    {% if page_user.twitter_url %}<a href="{{ post.author.twitter_url }}" > Twitter </a> {% endif %}
-                    {% if page_user.instagram_url %}<a href="{{ post.author.instagram_url }}" > Instagram </a> {% endif %}
-                    {% if page_user.pinterest_url %}<a href="{{ post.author.pinterest_url }}" > Pinterest </a> {% endif %}
+                    {% if page_user.website_url %}<a href="{{ page_user.website_url }}" > Website </a> {% endif %}
+                    {% if page_user.facebook_url %}<a href="{{ page_user.facebook_url }}" > Facebook </a> {% endif %}
+                    {% if page_user.twitter_url %}<a href="{{ page_user.twitter_url }}" > Twitter </a> {% endif %}
+                    {% if page_user.instagram_url %}<a href="{{ page_user.instagram_url }}" > Instagram </a> {% endif %}
+                    {% if page_user.pinterest_url %}<a href="{{ page_user.pinterest_url }}" > Pinterest </a> {% endif %}
                   </p>
                   <p class="card-text">{{ page_user.bio }}</p>
                 </div>
               </div>
             </div>
           </div>
-
-
           <br>
       </div>
     </div>
