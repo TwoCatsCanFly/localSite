@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm,UserChangeForm,PasswordCh
 from django.urls import reverse_lazy
 from .forms import *
 from blog.models import *
-from django.views.generic import DetailView
+from django.views.generic import DetailView, CreateView
 from django.contrib.auth.views import PasswordChangeView
 
 
@@ -43,8 +43,16 @@ class EditProfilePageView(generic.UpdateView):
     success_url = reverse_lazy('home')
     fields = ['bio','profile_pic','website_url','facebook_url','twitter_url','instagram_url','pinterest_url']
 
+class CreateProfilePageView(CreateView):
+    class Meta:
+        model = Profile
+        form_class = ProfilePageForm
+        template_name = 'registration/create_user_profile_page.html'
 
-
+        #делаем id пользователя доступным для вида и страници
+        def form_valid(self, form):
+            form.instance.user = self.request.user
+            return super().form_valid(form)
 
 def password_success(request):
     return render(request, 'registration/password_success.html',{})
